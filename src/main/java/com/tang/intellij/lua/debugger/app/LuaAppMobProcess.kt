@@ -51,7 +51,7 @@ internal class LuaAppMobProcess(session: XDebugSession) : LuaMobDebugProcess(ses
 
         val commandLine = GeneralCommandLine(configuration.program)
         commandLine.addParameters("-e", String.format("package.path = package.path .. ';%s' require('mobdebug').start()", setupPackagePath.toString()))
-        commandLine.addParameters(configuration.file!!)
+        commandLine.addParameters(*configuration.parametersArray)
 
         val dir = configuration.workingDir
         if (dir != null && !dir.isEmpty())

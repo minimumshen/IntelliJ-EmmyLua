@@ -113,13 +113,13 @@ class LuaAppRunConfiguration(project: Project, factory: ConfigurationFactory)
     val parametersArray: Array<String>
         get() {
             val list = ArrayList<String>()
-            if (false == parameters?.isEmpty()) {
-                val strings = ParametersListUtil.parseToArray(parameters!!)
-                list.addAll(Arrays.asList(*strings))
-            }
             val file = file
             if (file != null && file.isNotEmpty()) {
                 list.add(file)
+            }
+            if (false == parameters?.isEmpty()) {
+                val strings = ParametersListUtil.parseToArray(parameters!!)
+                list.addAll(Arrays.asList(*strings))
             }
             return list.toTypedArray()
         }
