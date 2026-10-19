@@ -49,7 +49,7 @@ internal class LuaAppMobProcess(session: XDebugSession) : LuaMobDebugProcess(ses
             }
         }
 
-        val commandLine = GeneralCommandLine(configuration.program)
+        val commandLine = GeneralCommandLine(configuration.program).withEnvironment(configuration.envs)
         commandLine.addParameters("-e", String.format("package.path = package.path .. ';%s' require('mobdebug').start()", setupPackagePath.toString()))
         commandLine.addParameters(*configuration.parametersArray)
 
